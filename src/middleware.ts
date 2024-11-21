@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
+import logger from './logger';
 
 export async function middleware(req: NextRequest) {
-    console.log(req)
+    logger.info({
+        url: req.nextUrl.href,
+        method: req.method,
+        headers: req.headers,
+    }, req.method);
     return NextResponse.next();
 }
