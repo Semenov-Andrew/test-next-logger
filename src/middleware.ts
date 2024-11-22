@@ -2,16 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import logger from './logger';
 
 export async function middleware(req: NextRequest) {
-    logger.info('handled request', {
-        request: {
-            url: req.nextUrl.href,
-            method: req.method,
-        },
-        response: {
-            status: 200,
-        },
-        duration: performance.now(),
-    });
+    logger.info(req.nextUrl, "losos", {karas: 322, sudak: 228})
+    console.log({losos: "karas"})
 
     return NextResponse.next();
 }
