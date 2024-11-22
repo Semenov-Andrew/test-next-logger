@@ -2,12 +2,13 @@ import pino from 'pino';
 
 const logger = pino({
     base: {
-        name: 'console',
+        name: 'console'
     },
-    mixin() {
-        return {
-            hostname: process.env.HOSTNAME || 'localhost',
-        };
+    timestamp: () => `,"time":${Date.now()}`,
+    formatters: {
+        level: (label) => ({ level: label }),
+        bindings: (bindings) => bindings,
+        log: (object) => object
     }
 });
 
