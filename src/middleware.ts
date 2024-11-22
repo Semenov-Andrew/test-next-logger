@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+function log(obj: Object, msg: string) {
+    console.log({ ...obj, msg });
+  }
+  
+
 export async function middleware(req: NextRequest) {
-    console.log(JSON.stringify({karas: "losos", sudak: "lin"}))
-    return NextResponse.next();
+    log({ losos: 'karas' }, 'request');
+
+
+  return NextResponse.next();
 }
