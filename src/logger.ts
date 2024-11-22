@@ -1,10 +1,14 @@
 import pino from 'pino';
 
 const logger = pino({
-    level: 'info',
     base: {
         name: 'console',
     },
+    mixin() {
+        return {
+            hostname: process.env.HOSTNAME || 'localhost',
+        };
+    }
 });
 
-export default logger
+export default logger;
