@@ -6,6 +6,14 @@ function log(obj: Object, msg: string) {
   
 
 export async function middleware(req: NextRequest) {
-  log({ method: req.method, url: req.url, body: req.body, headers: Object.fromEntries(req.headers.entries()), cookies: req.cookies }, `${req.method} ${req.nextUrl.pathname}`);
+  log({ 
+    method: req.method, 
+    url: req.url, 
+    body: req.body, 
+    headers: Object.fromEntries(req.headers.entries()), 
+    cookies: req.cookies.getAll()
+  }, `${req.method} ${req.nextUrl.pathname}`);
+  // log({ losos: "karas" }, `${req.method} ${req.nextUrl.pathname}`);
+
   return NextResponse.next();
 }
