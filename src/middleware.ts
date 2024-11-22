@@ -8,7 +8,7 @@ function log(obj: Object, msg: string) {
 export async function middleware(req: NextRequest) {
   log({ 
     method: req.method, 
-    url: req.url, 
+    url: req.nextUrl.href, 
     body: req.body, 
     headers: Object.fromEntries(req.headers.entries()), 
     cookies: req.cookies.getAll()
